@@ -64,7 +64,7 @@ void loop() {
     lastcheck = millis();                         
   }
 
-  // Wetter ID abrufen, sodass Animationen ausgeführt werden können
+  // Wetter ID abrufen, sodass die Animationen ausgeführt werden können
   if (weatherID == 800){
     LED_effect_clearSky();
   }
@@ -92,7 +92,7 @@ void getCurrentWeatherConditions() {
     //Verbindung unerfolgreich
     Serial.println("connection failed");
   }
-  // Größenangaben (SIZE)
+  // Größenangaben JSON (SIZE)
   const size_t capacity = JSON_ARRAY_SIZE(2) + 2 * JSON_OBJECT_SIZE(1) + 2 * JSON_OBJECT_SIZE(2) + 2 * JSON_OBJECT_SIZE(4) + JSON_OBJECT_SIZE(5) + JSON_OBJECT_SIZE(6) + JSON_OBJECT_SIZE(14) + 360;
   // JSON anlegen
   DynamicJsonDocument doc(capacity);
@@ -134,7 +134,7 @@ void fade(int led_position, uint16_t duration, uint16_t delay_val, uint16_t star
 }
 
 // clearSky Effekt, für wenn der Himmel klar ist
-void LED_effect_clearSky() { // Effekt, der angezeigt wird, wenn der Himmel klar ist
+void LED_effect_clearSky() {
   FastLED.setBrightness(255);
   leds[0] = CRGB::Yellow;
   FastLED.show();
